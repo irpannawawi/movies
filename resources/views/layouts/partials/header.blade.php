@@ -66,7 +66,7 @@
                             <div class="close-btn"><i class="fas fa-times"></i></div>
 
                             <nav class="menu-box">
-                                <div class="nav-logo"><a href="index.html"><img
+                                <div class="nav-logo"><a href="{{route('home')}}"><img
                                             src="{{ asset('assets/theme/movfix') }}/img/logo/logo.png" alt=""
                                             title=""></a>
                                 </div>
