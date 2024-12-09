@@ -17,6 +17,8 @@ class MovieController extends Controller
         $data = [
             'movies' => $popularMovies, 
             'categoryName' => collect(TMDBHelper::getMovieGenres())->keyBy('id')->get($id),
+            'categorySlug' => $slug,
+            'categoryID' => $id,
             'SEOData' => new SEOData(
                 title: 'Situs Nonton Film '.collect(TMDBHelper::getMovieGenres())->keyBy('id')->get($id)['name'] . ' Terbaik di Indonesia',
                 description: 'Situs Nonton Film '.collect(TMDBHelper::getMovieGenres())->keyBy('id')->get($id)['name']. ' Terbaik di Indonesia, menyajikan daftar film '.collect(TMDBHelper::getMovieGenres())->keyBy('id')->get($id)['name'] . ' terbaru dan terpopuler di Indonesia.',

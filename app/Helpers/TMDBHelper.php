@@ -49,9 +49,12 @@ class TMDBHelper
     public static function getMovieDetails($movieId)
     {
         return cache()->remember("movie:{$movieId}", now()->addDays(7), function () use ($movieId) {
-            return self::request("/movie/{$movieId}", [
+            $movie = self::request("/movie/{$movieId}", [
                 'language' => env('APP_LOCALE').'|'.env('APP_FALLBACK_LOCALE')
             ]);
+            $movie['created_at'] = now();
+            $movie['updated_at'] = now();
+            return $movie;
         });
     }
 

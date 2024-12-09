@@ -7,10 +7,14 @@
     <link rel="preload" as="script" href="{{ asset('assets/theme/movfix') }}/js/vendor/jquery-3.6.0.min.js">
     <link rel="preload" as="image" href="{{ asset('assets/theme/movfix') }}/img/poster/ucm_poster01.jpg">
 
-    {!! seo($SEOData??null) !!}
+    {!! seo($SEOData ?? null) !!}
 
-    @if (request()->routeIs('movies.show'))
+    @if (request()->routeIs('home'))
+        @include('layouts.partials.home-seo')
+    @elseif (request()->routeIs('movies.show'))
         @include('layouts.partials.single-seo')
+    @elseif (request()->routeIs('movies.category'))
+        @include('layouts.partials.category-seo')
     @endif
     <!-- Place favicon.ico in the root directory -->
 
@@ -72,6 +76,7 @@
             border-radius: 5px;
             padding: 5px;
         }
+
         @media (max-width: 767px) {
             .movie-card .badge-category {
                 font-size: 0.7rem;
