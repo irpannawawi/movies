@@ -29,14 +29,20 @@ class TMDBHelper
     public static function getPopularMovies($page = 1)
     {
         return cache()->remember('popular_movies_'.$page, now()->addDays(1), function () use ($page) {
-            return self::request('/movie/popular', ['page' => $page]);
+            return self::request('/movie/popular', [
+                'page' => $page,
+                'language' => env('APP_LOCALE').'|'.env('APP_FALLBACK_LOCALE')
+            ]);
         });
     }
 
     public static function getNowPlaying($page = 1)
     {
         return cache()->remember('now_playing_'.$page, now()->addDays(1), function () use ($page) {
-            return self::request('/movie/now_playing', ['page' => $page]);
+            return self::request('/movie/now_playing', [
+                'page' => $page,
+                'language' => env('APP_LOCALE').'|'.env('APP_FALLBACK_LOCALE')
+            ]);
         });
     }    
     
@@ -98,7 +104,7 @@ class TMDBHelper
         $cacheKey = 'movie_genres';
         $genres = cache()->remember($cacheKey, now()->addDays(7), function() {
             return self::request('/genre/movie/list', [
-                'language' => env('APP_LOCALE')
+                'language' => env('APP_LOCALE').'|'.env('APP_FALLBACK_LOCALE')
             ]);
         });
         return $genres['genres'];
@@ -109,7 +115,7 @@ class TMDBHelper
         $cacheKey = 'discover_movie_genres.'.$genres.'.'.$page;
         $genres = cache()->remember($cacheKey, now()->addDays(2), function() use ($genres, $page) {
             return self::request('/discover/movie', [
-                'language' => env('APP_LOCALE'),
+                'language' => env('APP_LOCALE').'|'.env('APP_FALLBACK_LOCALE'),
                 'with_genres' => $genres,
                 'order_by' => 'release_date.desc',
                 'page' => $page
