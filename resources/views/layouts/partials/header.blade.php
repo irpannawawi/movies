@@ -67,8 +67,8 @@
 
                             <nav class="menu-box">
                                 <div class="nav-logo"><a href="{{route('home')}}"><img
-                                            src="{{ asset('assets/theme/movfix') }}/img/logo/logo.png" alt=""
-                                            title=""></a>
+                                            src="{{ asset('assets/theme/movfix') }}/img/logo/logo.png" alt="Logo"
+                                            title="logo"></a>
                                 </div>
                                 <div class="menu-outer">
                                     <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
