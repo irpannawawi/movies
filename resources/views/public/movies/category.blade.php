@@ -20,7 +20,6 @@
                 @foreach ($movies['results'] as $key => $mov)
                     @php
                         $movie = TMDBHelper::getMovieDetails($mov['id']);
-                        dd($movie);
                     @endphp
 
                     <x-movie-card 
