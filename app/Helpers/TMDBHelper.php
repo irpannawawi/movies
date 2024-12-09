@@ -64,7 +64,7 @@ class TMDBHelper
         return self::request('/search/movie', [
             'query' => $query, 
             'page' => $page,
-            'language' => env('APP_LOCALE')
+            'language' => env('APP_LOCALE').'|'.env('APP_FALLBACK_LOCALE')
         ]);
     }
 

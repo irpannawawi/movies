@@ -1,3 +1,6 @@
+@php
+    use App\Helpers\TMDBHelper;
+@endphp
 <div class="col-sm-4 col-md-2 mb-4 p-1">
     <div class="movie-card">
         <img src="{{ $image }}" alt="Movie Poster">
@@ -12,10 +15,17 @@
     </a>
 
         <div class="badge-category">
+            @php
+                $genreList = collect(TMDBHelper::getMovieGenres());
+            @endphp
             @foreach ($genres as $genre)
-            <a href="{{ route('movies.category', ['id'=>$genre['id'], 'slug' => Str::slug($genre['name'])]) }}">
+            <a href="{{ route('movies.category', ['id'=>$genre['id'], 'slug' => Str::slug(
+            $genreList
+            ->where('id', $genre['id'])
+            ->first()['name']
+            )]) }}">
                         <span class="badge badge-info">
-                        {{ $genre['name'] }}
+                        {{ $genreList->where('id', $genre['id'])->first()['name'] }}
                     </span>
                 </a>
             @endforeach
