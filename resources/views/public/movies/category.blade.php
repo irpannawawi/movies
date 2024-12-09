@@ -10,7 +10,7 @@
             <div class="row align-items-end mb-55">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
-                        <h1 class="title h3">Nonton film {{ $categoryName['name'] }} Lengkap ({{ $movies['total_results'] }})</h1>
+                        <h1 class="title h3">Nonton film {{ $categoryName['name'] }} Lengkap ({{ $movies['total_results']??'' }})</h1>
                     </div>
                 </div>
             </div>
