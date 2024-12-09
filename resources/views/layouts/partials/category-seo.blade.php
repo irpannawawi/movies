@@ -8,7 +8,7 @@ use App\Helpers\TMDBHelper;
             'position' => $key + 1,
             'item' => [
                 '@type' => 'Movie',
-                'url' => route('movies.show', ['id' => $mov['id'], 'slug' => Str::slug($mov['title']??'')]),
+                'url' => route('movies.show', ['id' => $mov['id'], 'slug' => Str::slug($mov['title']??'unknown')]),
                 'name' => $mov['title'],
                 'image' => TMDBHelper::getImage($mov['poster_path'], 1280),
                 'dateCreated' => $mov['release_date'],
