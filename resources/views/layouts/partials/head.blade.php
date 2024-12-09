@@ -6,7 +6,7 @@
     <link rel="preload" as="style" href="{{ asset('assets/theme/movfix') }}/css/bootstrap.min.css">
     <link rel="preload" as="script" href="{{ asset('assets/theme/movfix') }}/js/vendor/jquery-3.6.0.min.js">
     <link rel="preload" as="image" href="{{ asset('assets/theme/movfix') }}/img/poster/ucm_poster01.jpg">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     {!! seo($SEOData ?? null) !!}
 
     @if (request()->routeIs('home'))
