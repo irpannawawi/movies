@@ -17,7 +17,18 @@
         @include('layouts.partials.category-seo')
     @endif
     <!-- Place favicon.ico in the root directory -->
+    @if (env('APP_ENV') == 'production')
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{env('GOOGLE_ANALYTICS_ID')}}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', "{{env('GOOGLE_ANALYTICS_ID')}}");
+</script>
+    @endif
+    
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('assets/theme/movfix') }}/css/bootstrap.min.css">
     {{-- <link rel="stylesheet" href="{{asset('assets/theme/movfix')}}/css/animate.min.css" defer> --}}
@@ -85,15 +96,5 @@
         }
     </style>
 
-    @if (env('APP_ENV') == 'production')
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{env('GOOGLE_ANALYTICS_ID')}}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', "{{env('GOOGLE_ANALYTICS_ID')}}");
-</script>
-    @endif
 </head>
