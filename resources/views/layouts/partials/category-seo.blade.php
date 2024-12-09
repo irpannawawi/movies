@@ -13,13 +13,6 @@ use App\Helpers\TMDBHelper;
                     'name' => $mov['title'],
                     'image' => TMDBHelper::getImage($mov['poster_path'], 1280),
                     'dateCreated' => $mov['release_date'],
-                    'review' => [
-                        '@type' => 'Review',
-                        'reviewRating' => [
-                            '@type' => 'Rating',
-                            'ratingValue' => $mov['vote_average'],
-                        ],
-                    ],
                     'aggregateRating' => [
                         '@type' => 'AggregateRating',
                         'ratingValue' => $mov['vote_average'],
