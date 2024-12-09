@@ -48,19 +48,19 @@
                                             href="{{ route('movies.search', ['s' => request()->query('s'), 'page' => $movies['page'] - 1]) }}">Prev</a>
                                     </li>
                                 @endif
-                                @for ($i = max(1, $movies['page'] - 3); $i <= min($movies['page'] + 3, $movies['total_pages']); $i++)
+                                @for ($i = max(1, min($movies['page'] - 3, 497)); $i <= min($movies['page'] + 3, 500); $i++)
                                     <li class="{{ $i == $movies['page'] ? 'active' : '' }}"><a
                                             href="{{ route('movies.search', ['s' => request()->query('s'), 'page' => $i]) }}">{{ $i }}</a>
                                     </li>
                                 @endfor
-                                @if ($movies['page'] < $movies['total_pages'])
+                                @if ($movies['page'] < min($movies['total_pages'], 500))
                                     <li><a
                                             href="{{ route('movies.search', ['s' => request()->query('s'), 'page' => $movies['page'] + 1]) }}">Next</a>
                                     </li>
                                 @endif
-                                @if ($movies['page'] < $movies['total_pages'] - 3)
+                                @if ($movies['page'] < min($movies['total_pages'], 500) - 3)
                                     <li><a
-                                            href="{{ route('movies.search', ['s' => request()->query('s'), 'page' => $movies['total_pages']]) }}">Last</a>
+                                            href="{{ route('movies.search', ['s' => request()->query('s'), 'page' => min($movies['total_pages'], 500)]) }}">Last</a>
                                     </li>
                                 @endif
                             </ul>
