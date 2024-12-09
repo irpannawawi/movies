@@ -43,7 +43,7 @@
                     <div class="movie-details-prime">
                         <ul>
                             <li class="streaming">
-                                <h6>Watch trailer</h6>
+                                <b class="h3 text-white">Watch Movie</b>
                                 <span>{{ $movie['title'] }}</span>
                             </li>
                             <li class="watch"><a role="button" href="#watch"
